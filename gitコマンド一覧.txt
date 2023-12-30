@@ -1,0 +1,83 @@
+■ステージエリアにファイル追加する
+ git add ファイルパス
+
+■更新があった全てのファイルを対象にする
+git add -u
+
+■コメントをつけてコミットする
+git commit -m "コミットメッセージ入力！"
+
+■直前のメッセージコメントを修正する
+git commit --amend
+エディタが開いてコミットメッセージが表示されるので、変更して保存します。
+
+
+■プル
+git pull [リポジトリ] [ブランチ]
+git pull origin release/20230929
+
+
+■フェッチ
+git fetch [リポジトリ]
+git fetch origin release/20230929
+
+■マージする
+git 現在のブランチ 取り込むブランチ
+git merge dev release/20230929
+
+■（マージ後）プッシュする
+git push リポジトリ名 ローカルブランチ名:リモートブランチ名
+git push origin feature/alembic:feature/alembic
+git push origin release/20230929:release/20230929
+
+■ブランチを作成する
+git checkout -b 作成するブランチ名
+
+■ブランチ名をリモートに登録
+git push -u origin 作成したブランチ名
+
+■リモートブランチを更新する
+git fetch origin
+
+■リモートのブランチを削除する場合
+git push origin --delete remoteBranchName
+
+■ローカルのブランチを削除する場合
+git branch -d localBranchName
+
+■チェックアウト
+git checkout ブランチ名
+
+■ステージング取り消し
+git reset
+git reset <file>
+
+
+■スタッシュに格納
+変更がある状態で
+git stash
+
+■スタッシュリスト表示
+git stash list
+⇒stash@{0}: WIP on feature/meta_context: e341dca コンテキストお試し
+
+■スタッシュから変更を復元する
+git stash apply   # 最新のスタッシュを適用
+git stash apply stash@{n}  # 特定のスタッシュを適用
+
+■スタッシュ削除
+git stash drop   # 最新のスタッシュを削除
+git stash drop   # 最新のスタッシュを削除
+
+■スタッシュから変更を復元して削除する
+git stash pop   # 最新のスタッシュを適用して削除
+
+
+■おまじない
+echo "# Private_repos" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sumsumrice/Private_repos.git
+git push -u origin main
